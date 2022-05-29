@@ -1,0 +1,35 @@
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+{% block titulo_header %}
+
+    <h1>Blog de Viajes</h1>
+    <span class='subheading'>Blog de Viajes</span>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                {% for posteo in listadoPosteos %}
+                    <div class='post-preview'>
+                        <a href='{% url "Posteo" posteo.titulo%}'>
+                            <h2 class='post-title'>{{posteo.titulo}}</h2>
+                        </a>
+                        <p class='post-meta'>
+                            Posteado por
+                            <span>{{posteo.autor}}</span>
+                            {{posteo.fecha}}
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class='my-4' />
+                {% endfor %}    
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
