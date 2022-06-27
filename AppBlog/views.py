@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from AppBlog.forms import FormularioPosteo, FormularioComentario, FormularioBusqueda, FormularioUsuario
 from AppBlog.models import Usuario, Posteo, Comentario
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+class Home(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'AppBlog/inicio.html'
+    login_url = 'lib:login'
 
 def inicio(request):
 
